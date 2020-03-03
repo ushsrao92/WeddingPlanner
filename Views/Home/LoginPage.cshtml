@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="leftblock">
+            <h2>Login to this cool site</h2>
+            <a href="\">Register</a><br><br>
+            @model LogUser
+            <form action="/logProcess" method="post">
+                <span asp-validation-for="LogEmail" class="text-danger"></span>
+                <label asp-for="LogEmail"></label>
+                <input asp-for="LogEmail"/><br><br>
+                <span asp-validation-for="LogPassword" class="text-danger"></span>
+                <label asp-for="LogPassword"></label>
+                <input asp-for="LogPassword"/><br><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
+

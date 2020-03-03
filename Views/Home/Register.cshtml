@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="leftblock">
+            <h2>Register to this cool site</h2>
+            <a href="\login">Login</a><br><br>
+            @model RegUser
+            <form action="/regProcess" method="post">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName"/><br><br>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName"/><br><br>
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <label asp-for="Email"></label>
+                <input asp-for="Email"/><br><br>
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="Password"></label>
+                <input asp-for="Password"/><br><br>
+                <span asp-validation-for="ConfirmPass" class="text-danger"></span>
+                <label asp-for="ConfirmPass"></label>
+                <input asp-for="ConfirmPass"/><br><br>
+                <button type="submit">Sign Up Now</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+

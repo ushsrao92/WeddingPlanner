@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+@model Wedding
+<body>
+    <p><a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></p>
+    <h2>Plan your Wedding</h2><br>
+
+    <form action="/addEvent" method="post">
+        <span class="text-danger" asp-validation-for="Wedder_One"></span>
+        <label asp-for="Wedder_One"></label>
+        <input type="text" asp-for="Wedder_One"><br><br>
+        <span class="text-danger" asp-validation-for="Wedder_Two"></span>
+        <label asp-for="Wedder_Two"></label>
+        <input type="text" asp-for="Wedder_Two"><br><br>
+        <span class="text-danger" asp-validation-for="WeddingDate"></span>
+        <label asp-for="WeddingDate"></label>
+        <input type="date" asp-for="WeddingDate"><br><br>
+        <span class="text-danger" asp-validation-for="WeddingAddress"></span>
+        <label asp-for="WeddingAddress"></label>
+        <input type="text" asp-for="WeddingAddress"><br><br>
+        <input type="hidden" asp-for="CreatorId" value="@ViewBag.UserId">
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>

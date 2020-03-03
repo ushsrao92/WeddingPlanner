@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    @model List<Wedding> 
+    <div class="container">
+        <a class="one-line" href="/logout">LogOut</a>
+        <p><h2 class="one-line">Welcome to the Wedding Planner</h2></p>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guest</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Wedder_One & @item.Wedder_Two</td>
+                    <td>@item.WeddingDate.ToString("MMM dd, yyyy")</td>
+                    <td>@item.Guests.Count</td>
+                    @if (@ViewBag.UserId == @item.CreatorId)
+                    {
+                        <td><a href="/deleteEvent/@item.WedId">Delete</a></td>
+                    }
+                    
+                    else
+                    {
+                        var count = 0;
+                        foreach(var assoc in @item.Guests)
+                        {
+                            if(assoc.UId == @ViewBag.UserId)
+                            {
+                                count += 1;
+                            }
+
+                        }
+                        if (count == 0)
+                        {   
+                            <td><a href="/rsvp/@item.WedId">Rsvp</a></td>
+
+                        }
+                        else
+                        {
+                            <td><a href="/unrsvp/@item.WedId">Un-Rsvp</a></td>
+
+                        }
+                        @* @foreach (var assoc in @item.Guests)
+                        {
+                            @if (assoc.UId == @ViewBag.UserId)
+                            {
+                                <td><a href="/unrsvp/@item.WedId">Un-Rsvp</a></td>
+                            } 
+                            else
+                            {
+                                <td><a href="Join/@ViewBag.curId/@l.WeddingId">Join</a> </td>
+                            }
+                        }
+                    }
+                    else 
+                    {
+                    <td><a href="Join/@ViewBag.curId/@l.WeddingId">Join</a> </td> *@
+                    }
+                }
+                    }
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <form action="/create">
+        <button type="submit">New Wedding</button>
+    </form>
+    
+</body>
+</html>
